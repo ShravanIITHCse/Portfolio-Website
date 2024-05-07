@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 // import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerimg from '../assets/img/header-img.svg';
@@ -6,20 +6,24 @@ import headerimg from '../assets/img/header-img.svg';
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
-    const toRotate = ['Pre-final Year Student', 'Programmer', 'ML enthusiast', 'Freelancer'];
     const [text, setText] = useState('');
     const deleting_period = 1000;
     const typing_period = 500;
     const [delta, setDelta] = useState(300 - Math.random() * 100);
     const intro = 'Hi, I am Shravan, a';
 
-    useEffect(() => {
-        let ticker = setInterval(() => {
-            tick();
-        }, delta)
+    // useEffect(() => {
+    //     let ticker = setInterval(() => {
+    //         tick();
+    //     }, delta)
 
-        return () => clearInterval(ticker);
-    }, [text])
+    //     return () => clearInterval(ticker);
+    // }, [text, delta, tick])
+
+    const toRotate = useMemo(() => 
+        {
+            return ['Pre-final Year Student', 'Programmer', 'ML enthusiast', 'Freelancer']
+        }, []);
 
     const tick = useCallback(() => {
         let i = loopNum;
@@ -40,7 +44,7 @@ export const Banner = () => {
             setLoopNum((loopNum + 1) % toRotate.length);
             setDelta(typing_period);
         }
-    }, [loopNum, text, isDeleting, delta]);
+    }, [loopNum, text, isDeleting, delta, toRotate]);
     useEffect(() => {
         let ticker = setInterval(() => {
             tick();
