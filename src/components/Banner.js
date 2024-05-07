@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 // import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerimg from '../assets/img/header-img.svg';
@@ -21,7 +21,7 @@ export const Banner = () => {
         return () => clearInterval(ticker);
     }, [text])
 
-    const tick = () => {
+    const tick = useCallback(() => {
         let i = loopNum;
         let fullText = toRotate[i];
         let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length+1);
@@ -40,7 +40,14 @@ export const Banner = () => {
             setLoopNum((loopNum + 1) % toRotate.length);
             setDelta(typing_period);
         }
-    };
+    }, [loopNum, text, isDeleting, delta]);
+    useEffect(() => {
+        let ticker = setInterval(() => {
+            tick();
+        }, delta)
+
+        return () => clearInterval(ticker);
+    }, [tick, delta])
     return (
         <section className="banner" id="home">
             <Container>
