@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-// import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerimg from '../assets/img/header-img.svg';
 
 export const Banner = () => {
@@ -11,14 +10,6 @@ export const Banner = () => {
     const typing_period = 500;
     const [delta, setDelta] = useState(300 - Math.random() * 100);
     const intro = 'Hi, I am Shravan, a';
-
-    // useEffect(() => {
-    //     let ticker = setInterval(() => {
-    //         tick();
-    //     }, delta)
-
-    //     return () => clearInterval(ticker);
-    // }, [text, delta, tick])
 
     const toRotate = useMemo(() => 
         {
