@@ -53,7 +53,6 @@ export const NavBar = () => {
                             <a href="https://leetcode.com/u/Three_swords_zoro/"><img src={leetcode} alt="Leetcode" /></a>
                             <a href="https://codeforces.com/profile/Shravanair160"><img src={codeforces} alt="CodeForces" /></a>
                         </div>
-                        <button className="vvd" onClick={() => console.log('connect')}><span>Let's connect</span></button>
                     </span>
                 </Navbar.Collapse>
             </Container>
