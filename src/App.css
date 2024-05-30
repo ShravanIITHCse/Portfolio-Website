@@ -95,7 +95,7 @@ nav.navbar.scrolled {
   background-color: #121212;
 }
 nav.navbar a.navbar-brand {
-    width: 8%;
+    width: 10%;
 }
 
 nav.navbar .navbar-brand img {
@@ -628,6 +628,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-top: 20px;
   font-size: 10%;
 
+}
+
+#footer-social-icon {
+  /* display: inline-block; */
+  display: flex;
+  justify-content: right;
+  padding-top : 10%;
+  /* margin-left: 14px; */
 }
 
 @keyframes float {
